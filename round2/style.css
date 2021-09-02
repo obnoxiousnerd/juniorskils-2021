@@ -1,0 +1,208 @@
+/* CSS Variables used throughout the stylesheet. */
+:root {
+    --palette-main: #fefaec;
+    --palette-main-footer: #f8eab9;
+    --palette-accent: #ff008c;
+    --palette-text-main: #625772;
+    --palette-text-accent: #0d0b0f;
+    --breakpoint-desktop: 1024px;
+    --breakpoint-tablet: 768px;
+    --clickable-border-radius: 8px;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: Verdana, sans-serif;
+    background: var(--palette-main);
+    color: var(--palette-text-main);
+    font-size: 18px;
+}
+
+a,
+a:visited {
+    color: inherit;
+}
+
+nav.navbar {
+    background-color: var(--palette-main);
+    height: 64px;
+    padding: 0 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+nav.navbar img {
+    object-fit: contain;
+    height: 64px;
+}
+
+nav.navbar ul.links {
+    margin: 0;
+    padding: 0;
+    max-width: 50%;
+    align-items: center;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    flex: 1;
+    align-self: flex-end;
+}
+
+nav.navbar button.open-links {
+    display: none;
+}
+
+ul.links li.link {
+    list-style: none;
+    padding: 0.5rem;
+    border: 0px solid;
+    border-radius: var(--clickable-border-radius);
+    cursor: pointer;
+}
+
+ul.links li.link:hover {
+    background-color: var(--palette-text-main);
+    color: var(--palette-main);
+}
+
+ul.links li.link a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul.links li.link a:visited {
+    color: inherit;
+}
+
+main {
+    margin: 2rem;
+}
+
+section#hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    width: 100%;
+    padding-bottom: 10vh;
+}
+
+section#hero img {
+    width: 60%;
+}
+
+section#hero h1 {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+nav.social-media {
+    width: 72px;
+    border-radius: var(--clickable-border-radius);
+    background: var(--palette-main);
+    position: fixed;
+    z-index: 98;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+nav.social-media ul {
+    margin: 0;
+    padding: 0;
+    margin-left: 0.5rem;
+    list-style-type: none;
+}
+
+nav.social-media ul li a img {
+    width: 64px;
+    border-radius: var(--clickable-border-radius);
+}
+
+footer {
+    background-color: var(--palette-main-footer);
+    padding: 1rem 0;
+    text-align: center;
+}
+
+/* Styles for tablet viewport. */
+@media (max-width: 768px) {
+    nav.navbar button.open-links {
+        background-color: var(--palette-main);
+        font-size: 2rem;
+        border: 0;
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+    }
+
+    nav.navbar ul.links {
+        display: none;
+        max-width: 100%;
+        width: 100vw;
+    }
+
+    nav.navbar ul.links.open {
+        position: absolute;
+        top: 64px;
+        left: 0;
+        flex-direction: column;
+        display: flex;
+        z-index: 99;
+        background-color: var(--palette-main);
+        animation: fade-in 250ms ease 1;
+    }
+
+    nav.navbar ul.links.open li.link {
+        display: block;
+        text-align: center;
+        width: 95%;
+    }
+
+    section#hero img {
+        width: 100%;
+    }
+}
+
+section#programmes,
+section#portal {
+    background-color: var(--palette-accent);
+    color: var(--palette-text-accent);
+}
+
+section#contact-us,
+section#programmes,
+section#admission,
+section#portal {
+    padding: 1rem 0;
+    font-size: 1.2rem;
+    line-height: 1.3rem;
+    text-align: center;
+    height: 100vh;
+}
+
+/* Keyframes */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Utility classes. */
+img.responsive {
+    width: 100%;
+    height: 100%;
+}

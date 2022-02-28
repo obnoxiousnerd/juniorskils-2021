@@ -1,0 +1,314 @@
+/* Theming and colors */
+:root {
+	--color-accent: #7a1f1f;
+	--color-main: #ffe835;
+	--color-text-accent: #fff;
+	--color-text-main: #000;
+
+	--breakpoint: 960px;
+	--border-radius-general: 5px;
+
+	--font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+		Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", Verdana, Geneva, Tahoma,
+		sans-serif;
+
+	--typography-level1: 3rem;
+	--typography-level2: 2.5rem;
+	--typography-level3: 2rem;
+	--typography-level4: 1.5rem;
+	--typography-base: 1rem;
+	--typography-small: 0.8rem;
+}
+.accent {
+	color: var(--color-text-main);
+	background-color: var(--color-main);
+}
+.accent-inverse {
+	background-color: var(--color-text-main);
+	color: var(--color-main);
+}
+.main {
+	color: var(--color-text-accent);
+	background-color: var(--color-accent);
+}
+.main-inverse {
+	background-color: var(--color-text-accent);
+	color: var(--color-accent);
+}
+html,
+body {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	font-size: 16px;
+	box-sizing: border-box;
+	line-height: 1.5;
+	font-family: var(--font-family);
+	scroll-behavior: smooth;
+}
+body {
+	display: grid;
+	grid-template-columns: 1fr;
+	/* Keep height auto to keep the header sticky. */
+	height: auto;
+}
+nav {
+	padding: 0.5rem 1rem;
+	display: grid;
+	grid-template-columns: 0.4fr 0.6fr;
+	position: sticky;
+	top: 0;
+}
+nav section.title {
+	display: flex;
+	column-gap: 1rem;
+	align-items: center;
+}
+nav ul.links {
+	display: flex;
+	list-style: none;
+	padding: 0;
+}
+nav a {
+	color: inherit;
+	text-decoration: none;
+}
+nav a:visited {
+	color: inherit;
+}
+
+/* Smaller screens */
+@media screen and (max-width: 960px) {
+	nav {
+		grid-template-columns: 1fr 4rem;
+		grid-template-rows: 4rem max-content;
+		justify-content: space-between;
+		align-items: center;
+	}
+	nav ul.links {
+		display: none;
+
+		flex-direction: column;
+		justify-content: center;
+		grid-column: 1 / 3;
+
+		transform-origin: top right;
+	}
+	nav ul.links.visible {
+		display: flex;
+	}
+	nav ul.links li {
+		width: 100%;
+		text-align: center;
+	}
+
+	nav ul.links li a {
+		display: inline-block;
+		width: 100%;
+		padding: 0.5rem 0;
+		margin: 0.25rem 0;
+		color: var(--color-text-main);
+		border: 2px solid var(--color-text-main);
+		border-radius: var(--border-radius-general);
+	}
+
+	main section.text {
+		width: 80% !important;
+	}
+
+	section#countdown section.actual-countdown {
+		font-size: var(--typography-level3);
+	}
+	section#gallery section.img-gallery {
+		display: grid;
+		grid-template-rows: repeat(2, 0.5fr);
+		grid-template-columns: repeat(2, 0.5fr);
+		gap: 2px;
+	}
+}
+/* Larger screens */
+@media screen and (min-width: 960px) {
+	nav ul.links {
+		flex-direction: row;
+		justify-content: right;
+		align-items: center;
+		column-gap: 2rem;
+	}
+	nav button.open-links {
+		display: none;
+	}
+	section#gallery section.img-gallery {
+		display: grid;
+		grid-template-rows: repeat(4, 0.25fr);
+		grid-template-columns: repeat(4, 0.25fr);
+		gap: 2px;
+	}
+}
+
+button.open-links {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 70%;
+	background: transparent;
+	border: 2px var(--color-text-main) solid;
+	border-radius: 5px;
+	cursor: pointer;
+}
+button.open-links span.hamburger {
+	display: block;
+	width: 5ch;
+	height: 4px;
+	background: var(--color-text-main);
+	margin: 3px 0;
+	transition: all 200ms ease;
+}
+
+button.open-links.toggled span.hamburger:nth-child(1) {
+	transform: rotateZ(45deg);
+}
+
+button.open-links.toggled span.hamburger:nth-child(2) {
+	display: none;
+}
+button.open-links.toggled span.hamburger:nth-child(3) {
+	transform: rotateZ(-45deg);
+	margin-top: -6px;
+}
+
+main {
+	height: max-content;
+}
+main section {
+	padding: 1rem 2rem;
+	overflow: auto;
+}
+main section#home {
+	text-align: center;
+	height: calc(90vh - 6rem);
+	background-image: url(./assets/img/banner.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	color: var(--color-text-accent);
+	overflow: hidden;
+
+	display: grid;
+	place-items: center;
+}
+h1.title {
+	font-size: var(--typography-level1);
+	margin-bottom: 0.5rem;
+}
+p.subtitle {
+	font-size: 1.2rem;
+}
+
+main section.text {
+	width: 50%;
+	overflow: auto;
+	padding: 0 1rem;
+	background-color: rgba(0, 0, 0, 0.411);
+	border-radius: var(--border-radius-general);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+details > summary {
+	list-style-type: "▶️";
+}
+
+details[open] > summary {
+	list-style-type: "🔽";
+}
+
+main section#about-competition details h3 {
+	display: inline;
+}
+
+section#faq {
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	row-gap: 0.5rem;
+}
+
+section#faq details {
+	cursor: pointer;
+	padding: 1rem;
+	color: var(--color-text-main);
+	background-color: var(--color-main);
+	border-radius: var(--border-radius-general);
+}
+
+section#countdown section.actual-countdown {
+	font-size: var(--typography-level1);
+	text-align: center;
+}
+
+section#countdown span.column {
+	font-weight: bold;
+}
+
+section#register form {
+	padding: 1rem;
+	border: 2px dotted var(--color-accent);
+	display: grid;
+	grid-template-columns: 0.9fr;
+	place-items: center;
+}
+
+section#register form label {
+	display: block;
+	width: 40%;
+}
+
+section#register form label[data-required="true"]::after {
+	content: " *";
+	color: red;
+}
+
+section#register form input,
+section#register form select {
+	width: 40%;
+	margin-bottom: 1rem;
+	height: 2rem;
+	font-size: 1.2rem;
+	padding-left: 0.5rem;
+	border: 1px solid var(--color-accent);
+	border-radius: var(--border-radius-general);
+}
+
+section#register form input[type="submit"] {
+	color: var(--color-text-accent);
+	background-color: var(--color-accent);
+	border-style: solid;
+	padding: 0.5rem;
+	height: 3rem;
+	cursor: pointer;
+}
+
+section#gallery section.img-gallery img {
+	object-fit: cover;
+	width: 100%;
+	height: auto;
+	border-radius: var(--border-radius-general);
+	cursor: pointer;
+}
+
+footer {
+	padding: 1rem;
+	text-align: center;
+	font-size: 1.2rem;
+}
+
+footer ul.social-media {
+	padding: 0;
+	list-style-type: none;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	column-gap: 2rem;
+}

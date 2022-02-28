@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Registeration for Skills Competition</title>
+		<link
+			rel="shortcut icon"
+			href="./assets/img/favicon.png"
+			type="image/png"
+		/>
+	</head>
+	<body>
+		<h1 class="message"></h1>
+		<script>
+			// This is a dummy registeration page, made solely for the purpose of submitting
+			// the form as described in the test project description.
+			const validSkills = [
+				"Architectural Stonemasonry",
+				"Bricklaying",
+				"Cabinetmaking",
+				"Carpentry",
+				"Concrete Construction Work",
+				"Electrical Installations",
+				"Joinery",
+				"Landscape Gardening",
+				"Painting and Decorating",
+				"Plastering and Drywall Systems",
+				"Plumbing and Heating",
+				"Refrigeration and Air Conditioning",
+				"Wall and Floor Tiling",
+				"3D Digital Game Art",
+				"Fashion Technology",
+				"Floristry",
+				"Graphic Design Technology",
+				"Jewellery",
+				"Visual Merchandising",
+				"Rapid Prototyping",
+				"Robot Systems Integration",
+				"Robotic Welding",
+				"Space Systems Engineering",
+				"Virtual and Augmented Reality",
+				"Information and Communication Technology",
+				"Cloud Computing",
+				"Cyber Security",
+				"Information Network Cabling",
+				"IT Network Systems Administration",
+				"IT Software Solutions for Business",
+				"Print Media Technology",
+				"Web Technologies",
+				"Manufacturing and Engineering Technology",
+				"Chemical Laboratory Technology",
+				"CNC Milling",
+				"CNC Turning",
+				"Construction Metal Work",
+				"Electronics",
+				"Industrial Control",
+				"Industrial Mechanic Millwright",
+				"Manufacturing Team Challenge",
+				"Mechanical Engineering CAD",
+				"Mechatronics",
+				"Mobile Robotics",
+				"Plastic Die Engineering",
+				"Polymechanics and Automation",
+				"Polymechanics and Automation",
+				"Prototype Modelling",
+				"Water Technology",
+				"Welding",
+				"Social and Personal Services",
+				"Bakery",
+				"Beauty Therapy",
+				"Cooking",
+				"Hairdressing",
+				"Health and Social Care",
+				"Hotel Reception",
+				"Pâtisserie and Confectionery",
+				"Restaurant Service",
+				"Restaurant Service",
+				"Transportation and Logistics",
+				"Aircraft Maintenance",
+				"Autobody Repair",
+				"Automobile Technology",
+				"Car Painting",
+				"Freight Forwarding",
+				"Heavy Vehicle Technology",
+			];
+			const paramString = window.location.search.split("?")[1];
+			const params = new URLSearchParams(paramString);
+			const skill = params.get("skill");
+			if (validSkills.includes(skill)) {
+				document.querySelector(
+					".message"
+				).textContent = `You have been registered for "${skill}"`;
+			} else {
+				document.querySelector(".message").textContent =
+					"Invalid data recieved. Please try again.";
+			}
+		</script>
+	</body>
+</html>
